@@ -7,9 +7,10 @@ class HomeRemoteDataSource {
 
     loadPosts(page) {
         const url = ApiEndPoint.GET_POSTS;
-        return this.networkService.get(url, { params: { page: page } });
+        return this.networkService
+            .get(url, { params: { page: page } })
+            .then((response) => response.data);
     }
 }
-
 
 export default HomeRemoteDataSource;
