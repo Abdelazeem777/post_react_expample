@@ -3,11 +3,13 @@ class HomeRepository {
         this.homeRemoteDataSource = homeRemoteDataSource;
     }
 
-    loadPosts(page) {
-        return this.homeRemoteDataSource.loadPosts(page);
+    loadPosts() {
+        return this.homeRemoteDataSource.getPosts();
     }
 
+    loadPostByUserId(userId) {
+        return this.homeRemoteDataSource.getPostByUserId(userId);
+    }
 }
-
 
 export default HomeRepository;

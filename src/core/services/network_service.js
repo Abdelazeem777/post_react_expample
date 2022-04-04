@@ -5,7 +5,7 @@ class NetworkService {
         return axios.get(url, {
             params: params,
             headers: headers,
-            data: data
+            data: data,
         });
     }
 
@@ -13,7 +13,7 @@ class NetworkService {
         return axios.post(url, {
             params: params,
             headers: headers,
-            data: data
+            data: data,
         });
     }
 
@@ -21,7 +21,7 @@ class NetworkService {
         return axios.put(url, {
             params: params,
             headers: headers,
-            data: data
+            data: data,
         });
     }
 
@@ -29,12 +29,9 @@ class NetworkService {
         return axios.delete(url, {
             params: params,
             headers: headers,
-            data: data
+            data: data,
         });
     }
-
-
 }
-
 
 export default NetworkService;

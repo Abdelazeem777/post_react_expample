@@ -5,10 +5,15 @@ class HomeRemoteDataSource {
         this.networkService = networkService;
     }
 
-    loadPosts(page) {
+    getPosts() {
+        const url = ApiEndPoint.GET_POSTS;
+        return this.networkService.get(url).then((response) => response.data);
+    }
+
+    getPostByUserId(userId) {
         const url = ApiEndPoint.GET_POSTS;
         return this.networkService
-            .get(url, { params: { page: page } })
+            .get(url, { userId: userId })
             .then((response) => response.data);
     }
 }
