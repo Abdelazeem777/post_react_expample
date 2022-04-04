@@ -7,7 +7,11 @@ class HomeRemoteDataSource {
 
     getPosts() {
         const url = ApiEndPoint.GET_POSTS;
-        return this.networkService.get(url).then((response) => response.data);
+        return this.networkService.get(url).then((response) => {
+            if (response.status !== 200) console.log("error");
+
+            return response.data;
+        });
     }
 
     getPostByUserId(userId) {

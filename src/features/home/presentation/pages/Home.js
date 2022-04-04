@@ -11,39 +11,47 @@ export default function Home() {
 
     Injector.loadPostsUsecase()
       .execute()
-      .then((result) => {
+      .then((posts) => {
         dispatch({
           type: "loaded",
-          payload: result ,
+          payload: posts,
         });
       })
       .catch((err) => {
-        dispatch({ type: "error", payload:  err  });
+        dispatch({ type: "error", payload: err });
       });
-  },[]);
+  }, []);
 
- var userId=0;
+  var userId = 0;
 
   return (
     <div>
       <h1>Home Posts</h1>
-      <input type="text" placeholder="user id" onChange={(e)=>userId=e.target.value}/>
-      <br/>
-      <br/>
-      <button onClick={() =>{
+      <input
+        type="text"
+        placeholder="user id"
+        onChange={(e) => (userId = e.target.value)}
+      />
+      <br />
+      <br />
+      <button
+        onClick={() => {
           dispatch({ type: "loading" });
           Injector.loadPostsByUserIdUsecase()
-          .execute(userId)
-          .then((result) => {
-            dispatch({
-              type: "loaded",
-              payload: result ,
+            .execute(userId)
+            .then((posts) => {
+              dispatch({
+                type: "loaded",
+                payload: posts,
+              });
+            })
+            .catch((err) => {
+              dispatch({ type: "error", payload: err });
             });
-          })
-          .catch((err) => {
-            dispatch({ type: "error", payload:  err  });
-          });
-    }}>Load post</button>
+        }}
+      >
+        Load post
+      </button>
       {state.isLoading ? (
         <p>Loading...</p>
       ) : (
